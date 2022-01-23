@@ -4,26 +4,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/users")
 public class UserController {
+    private UserServiceInterface userService;
 
-
-    private static List<User> users = new ArrayList<>();
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping
     public ResponseEntity<List<User>> index() {
-        return ResponseEntity.ok(users);
+        return ResponseEntity.ok(userService.findAll());
     }
 
     @PostMapping
     public ResponseEntity<User> create(@Valid @RequestBody UserReq userReq) {
-        User user = new User(userReq.getName(), userReq.getEmail(), userReq.getPassword());
-
-        users.add(user);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(userService.save(userReq));
     }
 }
