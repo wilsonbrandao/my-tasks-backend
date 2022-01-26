@@ -55,3 +55,10 @@ jobs:
           DATASOURCE_URL: jdbc:postgresql://localhost:5432/my_tasks
           DATASOURCE_USERNAME: postgres
           DATASOURCE_PASSWORD: 123456
+
+      - name: Deploy to Heroku     
+        uses: AkhileshNS/heroku-deploy@v3.12.12
+        with:
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          heroku_api_key: ${{secrets.HEROKU_APP_KEY}}
