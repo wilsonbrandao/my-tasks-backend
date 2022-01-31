@@ -30,6 +30,7 @@ tasks.jar {
 	enabled = false
 }
 
+
 flyway {
 	url = System.getenv().getOrDefault("DATASOURCE_URL", "jdbc:postgresql://localhost:5432/my_tasks")
 	user = System.getenv("DATASOURCE_USERNAME") ?: "postgres"
