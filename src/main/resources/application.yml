@@ -15,5 +15,12 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+logging:
+  level:
+    root: INFO
+
+    com:
+      example: ${APP_LOGGING_LEVEL:TRACE}
+
 user:
   maxNumber: ${USER_MAX_NUMBER:3}
